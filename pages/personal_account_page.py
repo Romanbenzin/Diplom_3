@@ -1,5 +1,3 @@
-import time
-
 import allure
 
 from data.locators import login_page_email_field, login_page_password_field, \
