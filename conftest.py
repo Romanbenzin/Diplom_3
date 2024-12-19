@@ -5,6 +5,7 @@ from selenium import webdriver
 from data.url import URL_MAIN_PAGE
 from pages.base_page import BasePage
 from pages.login_page import ResetPassword
+from pages.personal_account_page import PersonalAccountPage
 
 
 @pytest.fixture(scope='function')
@@ -22,12 +23,12 @@ def driver():
 
 @pytest.fixture()
 @allure.step("Открытие главной страницы")
-def open_main_page(driver):
+def recover_password(driver):
     driver.get(URL_MAIN_PAGE)
     return ResetPassword(driver)
 
 @pytest.fixture()
 @allure.step("Открытие страницы заказов")
-def open_order_page(driver):
+def personal_account(driver):
     driver.get(URL_MAIN_PAGE)
-    return BasePage(driver)
+    return PersonalAccountPage(driver)

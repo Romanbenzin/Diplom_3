@@ -1,11 +1,8 @@
 import time
 
 import allure
-from selenium.webdriver.support.expected_conditions import invisibility_of_element_located
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions
 
-from locators import login_page_recover_password_button, forgot_page_login_button, forgot_page_email_field, \
+from data.locators import login_page_recover_password_button, forgot_page_email_field, \
     forgot_page_recover_button, reset_pass_page_field, reset_pass_hidden_button, reset_pass_pass_field
 from pages.base_page import BasePage
 
