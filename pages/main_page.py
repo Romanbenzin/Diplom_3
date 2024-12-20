@@ -1,9 +1,7 @@
 import allure
 from selenium.webdriver import ActionChains
 
-from data.locators import login_page_email_field, login_page_password_field, \
-    login_page_login_button, personal_account_history_button, personal_account_exit_button, ingredient, \
-    modal_ingredient_text, close_modal, main_page_make_burger_text, move_place, counter_ingredient, \
+from data.locators import ingredient, modal_ingredient_text, close_modal, main_page_make_burger_text, move_place, counter_ingredient, \
     main_page_order_button, create_order_modal
 from pages.personal_account_page import PersonalAccountPage
 

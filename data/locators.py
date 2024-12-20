@@ -1,35 +1,5 @@
 from selenium.webdriver.common.by import By
 
-#Страница регистрации
-register_page_already_registered = "//p[@class='undefined text text_type_main-default text_color_inactive mb-4']"
-register_page_fields= "//input[@class='text input__textfield text_type_main-default']"
-register_page_register_button = "//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa']"
-register_page_error = "//p[@class='input__error text_type_main-default']"
-register_page_login_button = "//a[@class='Auth_link__1fOlj' and @href='/login']"
-
-#Главная страница
-main_page_select_sauce = ".//span[text()='Соусы']"
-main_page_select_sauce_up = main_page_select_sauce + "/.."
-main_page_select_filling = ".//span[text()='Начинки']"
-main_page_select_filling_up = main_page_select_filling + "/.."
-main_page_select_bun = ".//span[text()='Булки']"
-main_page_select_bun_up = main_page_select_bun + "/.."
-
-#Лого бургера и конструктор
-burger_logo = "//a[@href='/']"
-#Ожидамое значение для теста. Селект выбран
-selected_this_one = "tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect"
-#Ожидаемое значение для теста. Селект не выбран
-selected_value_not_this = "tab_tab__1SPyG  pt-4 pr-10 pb-4 pl-10 noselect"
-
-
-
-
-
-#
-modal_loader = [By.XPATH, "//p[@class='Modal_modal__loading__3534A']"]
-# history_loader = [By.XPATH, "//p[@class='Modal_modal__loading__3534A']"]
-
 # Главная страница
 feed_order_button = [By.XPATH, "//a[@class='AppHeader_header__link__3D_hX' and .//p[text()='Лента Заказов']]"]
 constructor_button = [By.XPATH, "//p[@class='AppHeader_header__linkText__3q_va ml-2']"]
@@ -43,7 +13,6 @@ close_modal = [By.XPATH, "//button[@class='Modal_modal__close_modified__3V5XS Mo
 move_place = [By.XPATH, "//span[@class='constructor-element__text']"]
 counter_ingredient = [By.XPATH, "//p[@class='counter_counter__num__3nue1']"]
 main_page_make_burger_text = [By.XPATH, "//h1[@class='text text_type_main-large mb-5 mt-10']"]
-
 create_order_modal = [By.XPATH, "//p[@class='undefined text text_type_main-small mb-2']"]
 
 # Страница login
@@ -66,12 +35,19 @@ reset_pass_save_button = [By.XPATH, "//button[@class='button_button__33qZ0 butto
 reset_pass_second_field = [By.XPATH, "//label[@class='input__placeholder text noselect text_type_main-default' and text()='Введите код из письма']"]
 
 #Страница account
-personal_account_save_button = "//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa']"
-personal_account_email_field = "//input[@class='text input__textfield text_type_main-default input__textfield-disabled']"
 personal_account_exit_button = [By.XPATH, "//button[@class='Account_button__14Yp3 text text_type_main-medium text_color_inactive']"]
 personal_account_history_button = [By.XPATH, "//a[text()='История заказов']"]
 personal_account_profile_button = [By.XPATH, "//a[@class='Account_link__2ETsJ text text_type_main-medium text_color_inactive']"]
+modal_loader = [By.XPATH, "//p[@class='Modal_modal__loading__3534A']"]
 
 # Страница feed
 text_feed_order = [By.XPATH, "//h1[@class='text text_type_main-large mt-10 mb-5']"]
 first_order = (By.XPATH, "//div[@class='OrderFeed_contentBox__3-tWb']//ul[@class='OrderFeed_list__OLh59']/li[1]")
+text_field_in_modal = [By.XPATH, "//p[@class='text text_type_main-default text_color_inactive']"]
+order_number_field = [By.XPATH, "//h2[@class='Modal_modal__title_shadow__3ikwq Modal_modal__title__2L34m text text_type_digits-large mb-8']"]
+wait_order_number_modal = [By.XPATH, "//div[@class='Modal_modal__P3_V5']"]
+close_modal_order = [By.XPATH, "//button[@class='Modal_modal__close_modified__3V5XS Modal_modal__close__TnseK']"]
+order_in_work = [By.XPATH, "//li[@class='text text_type_digits-default mb-2']"]
+find_order_number_in_list = [By.XPATH, "//p[@class='text text_type_digits-default']"]
+total_count_all_time = [By.XPATH, "(//p[@class='OrderFeed_number__2MbrQ text text_type_digits-large'])[1]"]
+total_today_count = [By.XPATH, "(//p[@class='OrderFeed_number__2MbrQ text text_type_digits-large'])[2]"]

@@ -23,3 +23,4 @@ class BasePage:
     @allure.step("Клик по кнопке Лента заказов")
     def click_on_feed(self):
         self.driver.find_element(*feed_order_button).click()
+

@@ -1,10 +1,11 @@
 import allure
 import pytest
-from selenium import webdriver
+import requests
+import random
 
+from selenium import webdriver
 from config_for_driver import browser_name
-from data.url import URL_MAIN_PAGE, URL_LOGIN_PAGE
-from pages.base_page import BasePage
+from data.url import URL_MAIN_PAGE
 from pages.feed_page import FeedPage
 from pages.login_page import ResetPassword
 from pages.main_page import MainPage
@@ -55,3 +56,23 @@ def main_func(driver):
 def feed_order(driver):
     return FeedPage(driver)
 
+@pytest.fixture
+@allure.step("Генерация пользовательских данных")
+def random_user_for_register():
+    random_number = random.randint(1000, 9999)
+    random_email = f"r{random_number}:{random_number}@ya.ru"
+    random_pass = f"password:{random_number}"
+    random_username = f"Username:{random_number}"
+
+    user_data = {
+        "email": random_email,
+        "password": random_pass,
+        "name": random_username
+    }
+    return user_data
+
+@pytest.fixture
+@allure.step("Создание пользователя через api")
+def test_user_create(random_user_for_register):
+    requests.post("https://stellarburgers.nomoreparties.site/api/auth/register", data=random_user_for_register)
+    return random_user_for_register

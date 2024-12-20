@@ -1,14 +1,13 @@
 # Diplom_3
 Проект по веб тестам
 # Запуск тестов:
-pytest test/ --alluredir=allure-results
-pytest test/test_order_page.py::TestClickOnLogo::test_example --alluredir=allure-results
-
-# Если тесты не запускаются на Windows через консоль:
-$env:PYTHONPATH="."; pytest test/ --alluredir=allure-results -v
+pytest tests/ --alluredir=allure-results
 
 # Посмотреть результат в allure
 allure serve allure_results
+
+# Если тесты не запускаются на Windows через консоль:
+$env:PYTHONPATH="."; pytest tests/ --alluredir=allure-results -v
 
 # Посмотреть allure отчет на windows
 allure generate allure-results -o allure-report --clean
