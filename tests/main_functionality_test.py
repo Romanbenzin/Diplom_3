@@ -38,3 +38,18 @@ class TestMainFunctional:
 
         assert main_func.text_calories() == "Калории,ккал"
 
+    @allure.title("Тест: закрытие модалки")
+    def test_close_ingredient_modal(self, driver, main_func):
+        main_func.click_on_ingredient()
+        WebDriverWait(driver, 10).until(expected_conditions.presence_of_element_located(modal_ingredient))
+        main_func.close_modal_ingredient()
+
+        WebDriverWait(driver, 10).until(expected_conditions.element_to_be_clickable(main_page_order_button))
+
+        assert main_func.text_burger() == "Соберите бургер"
+
+    @allure.title("Тест: при добавлении ингредиента в заказ, увеличивается каунтер данного ингредиента")
+    def test_ingredient_add(self, driver, main_func):
+        main_func.move_and_drop()
+        print(main_func.counter_bun())
+        assert main_func.counter_bun() == "2"
