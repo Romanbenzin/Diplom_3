@@ -47,9 +47,9 @@ class TestRestorePassword:
         WebDriverWait(driver, 60).until(expected_conditions.visibility_of_element_located(reset_pass_second_field))
         recover_password.input_password("hidden_password")
 
-        assert recover_password.attrebute_type() == "password"
+        assert recover_password.attribute_type() == "password"
         recover_password.click_on_hidden_button()
-        assert recover_password.attrebute_type() == "text"
+        assert recover_password.attribute_type() == "text"
 
 
 

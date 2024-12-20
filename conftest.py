@@ -5,6 +5,7 @@ from selenium import webdriver
 from config_for_driver import browser_name
 from data.url import URL_MAIN_PAGE, URL_LOGIN_PAGE
 from pages.base_page import BasePage
+from pages.feed_page import FeedPage
 from pages.login_page import ResetPassword
 from pages.main_page import MainPage
 from pages.personal_account_page import PersonalAccountPage
@@ -23,6 +24,7 @@ class WebDriveFactory:
 @pytest.fixture(scope='function')
 def driver():
     driver = WebDriveFactory.get_web_driver(browser_name)
+    driver.get(URL_MAIN_PAGE)
 
     yield driver
 
@@ -36,18 +38,20 @@ def driver():
 @pytest.fixture()
 @allure.step("Открытие главной страницы")
 def recover_password(driver):
-    driver.get(URL_MAIN_PAGE)
     return ResetPassword(driver)
 
 @pytest.fixture()
-@allure.step("Открытие страницы заказов")
+@allure.step("Открытие главной страницы")
 def personal_account(driver):
-    driver.get(URL_MAIN_PAGE)
     return PersonalAccountPage(driver)
 
 @pytest.fixture()
-@allure.step("Открытие страницы авторизации")
+@allure.step("Открытие главной страницы")
 def main_func(driver):
-    driver.get(URL_MAIN_PAGE)
     return MainPage(driver)
+
+@pytest.fixture()
+@allure.step("Открытие главной страницы")
+def feed_order(driver):
+    return FeedPage(driver)
 
