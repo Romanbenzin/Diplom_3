@@ -3,9 +3,10 @@ import pytest
 from selenium import webdriver
 
 from config_for_driver import browser_name
-from data.url import URL_MAIN_PAGE
+from data.url import URL_MAIN_PAGE, URL_LOGIN_PAGE
 from pages.base_page import BasePage
 from pages.login_page import ResetPassword
+from pages.main_page import MainPage
 from pages.personal_account_page import PersonalAccountPage
 
 
@@ -16,6 +17,8 @@ class WebDriveFactory:
             return webdriver.Firefox()
         elif browser == "chrome":
             return webdriver.Chrome()
+        else:
+            print("Для такого браузера нет драйвера")
 
 @pytest.fixture(scope='function')
 def driver():
@@ -41,3 +44,10 @@ def recover_password(driver):
 def personal_account(driver):
     driver.get(URL_MAIN_PAGE)
     return PersonalAccountPage(driver)
+
+@pytest.fixture()
+@allure.step("Открытие страницы авторизации")
+def main_func(driver):
+    driver.get(URL_MAIN_PAGE)
+    return MainPage(driver)
+
