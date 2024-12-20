@@ -20,13 +20,14 @@ class TestOrderFeed:
 
     @allure.title("Тест: заказы пользователя из раздела «История заказов» отображаются на странице «Лента заказов»")
     def test_check_order_create(self, driver, feed_order, test_user_create):
+        random_user_for_register, _ = test_user_create
         WebDriverWait(driver, 20).until(expected_conditions.element_to_be_clickable(ingredient))
         feed_order.move_and_drop()
         WebDriverWait(driver, 20).until(expected_conditions.element_to_be_clickable(main_page_order_button))
         feed_order.click_order_button()
         WebDriverWait(driver, 20).until(expected_conditions.element_to_be_clickable(login_page_recover_password_button))
-        feed_order.input_email(test_user_create["email"])
-        feed_order.input_password(test_user_create["password"])
+        feed_order.input_email(random_user_for_register["email"])
+        feed_order.input_password(random_user_for_register["password"])
         feed_order.click_login_button()
         WebDriverWait(driver, 20).until(expected_conditions.element_to_be_clickable(main_page_order_button))
         feed_order.click_order_button()
@@ -42,6 +43,7 @@ class TestOrderFeed:
 
     @allure.title("Тест: при создании нового заказа счётчик Выполнено за всё время увеличивается")
     def test_check_all_counter(self, driver, feed_order, test_user_create):
+        random_user_for_register, _ = test_user_create
         feed_order.click_on_feed()
         WebDriverWait(driver, 20).until(expected_conditions.presence_of_element_located(find_order_number_in_list))
 
@@ -53,8 +55,8 @@ class TestOrderFeed:
         WebDriverWait(driver, 20).until(expected_conditions.element_to_be_clickable(main_page_order_button))
         feed_order.click_order_button()
         WebDriverWait(driver, 20).until(expected_conditions.element_to_be_clickable(login_page_recover_password_button))
-        feed_order.input_email(test_user_create["email"])
-        feed_order.input_password(test_user_create["password"])
+        feed_order.input_email(random_user_for_register["email"])
+        feed_order.input_password(random_user_for_register["password"])
         feed_order.click_login_button()
         WebDriverWait(driver, 20).until(expected_conditions.element_to_be_clickable(main_page_order_button))
         feed_order.click_order_button()
@@ -70,6 +72,7 @@ class TestOrderFeed:
 
     @allure.title("Тест: при создании нового заказа счётчик Выполнено за сегодня увеличивается")
     def test_check_today_counter(self, driver, feed_order, test_user_create):
+        random_user_for_register, _ = test_user_create
         feed_order.click_on_feed()
         WebDriverWait(driver, 20).until(expected_conditions.presence_of_element_located(find_order_number_in_list))
 
@@ -81,8 +84,8 @@ class TestOrderFeed:
         WebDriverWait(driver, 20).until(expected_conditions.element_to_be_clickable(main_page_order_button))
         feed_order.click_order_button()
         WebDriverWait(driver, 20).until(expected_conditions.element_to_be_clickable(login_page_recover_password_button))
-        feed_order.input_email(test_user_create["email"])
-        feed_order.input_password(test_user_create["password"])
+        feed_order.input_email(random_user_for_register["email"])
+        feed_order.input_password(random_user_for_register["password"])
         feed_order.click_login_button()
         WebDriverWait(driver, 20).until(expected_conditions.element_to_be_clickable(main_page_order_button))
         feed_order.click_order_button()
@@ -98,13 +101,14 @@ class TestOrderFeed:
 
     @allure.title("Тест: заказы пользователя из раздела «История заказов» отображаются на странице «Лента заказов»")
     def test_check_order_in_work_status(self, driver, feed_order, test_user_create):
+        random_user_for_register, _ = test_user_create
         WebDriverWait(driver, 20).until(expected_conditions.element_to_be_clickable(ingredient))
         feed_order.move_and_drop()
         WebDriverWait(driver, 20).until(expected_conditions.element_to_be_clickable(main_page_order_button))
         feed_order.click_order_button()
         WebDriverWait(driver, 20).until(expected_conditions.element_to_be_clickable(login_page_recover_password_button))
-        feed_order.input_email(test_user_create["email"])
-        feed_order.input_password(test_user_create["password"])
+        feed_order.input_email(random_user_for_register["email"])
+        feed_order.input_password(random_user_for_register["password"])
         feed_order.click_login_button()
         WebDriverWait(driver, 20).until(expected_conditions.element_to_be_clickable(main_page_order_button))
         feed_order.click_order_button()
