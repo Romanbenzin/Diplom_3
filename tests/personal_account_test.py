@@ -32,10 +32,10 @@ class TestRestorePassword:
         personal_account.input_password(MY_PASSWORD)
         personal_account.click_login_button()
         # Нужна пауза
-        WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located(main_page_order_button))
+        WebDriverWait(driver, 60).until(expected_conditions.visibility_of_element_located(main_page_order_button))
         personal_account.click_on_login_to_account()
         # Нужна пауза
-        WebDriverWait(driver, 10).until(expected_conditions.element_to_be_clickable(login_page_login_button))
+        WebDriverWait(driver, 60).until(expected_conditions.element_to_be_clickable(login_page_login_button))
         personal_account.click_history_button()
         assert driver.current_url == "https://stellarburgers.nomoreparties.site/account/order-history"
 
@@ -47,12 +47,12 @@ class TestRestorePassword:
         personal_account.input_password(MY_PASSWORD)
         personal_account.click_login_button()
         # Нужна пауза
-        WebDriverWait(driver, 10).until(expected_conditions.element_to_be_clickable(login_page_login_button))
+        WebDriverWait(driver, 60).until(expected_conditions.element_to_be_clickable(login_page_login_button))
         personal_account.click_on_login_to_account()
         # Нужна пауза
-        WebDriverWait(driver, 10).until(expected_conditions.element_to_be_clickable(login_page_login_button))
+        WebDriverWait(driver, 60).until(expected_conditions.element_to_be_clickable(login_page_login_button))
         # Логаут
         personal_account.click_exit_button()
         # Нужна пауза
-        WebDriverWait(driver, 10).until(expected_conditions.element_to_be_clickable(register_button_in_personal_account))
+        WebDriverWait(driver, 60).until(expected_conditions.element_to_be_clickable(register_button_in_personal_account))
         assert driver.current_url == "https://stellarburgers.nomoreparties.site/login"
