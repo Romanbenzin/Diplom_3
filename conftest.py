@@ -3,7 +3,7 @@ import pytest
 import requests
 
 from config_driver_selection import browser_name
-from data.urls import URL_MAIN_PAGE, MAIN_API, API_REGISTER, API_USER
+from data.urls import URL_MAIN_PAGE, API_REGISTER, API_USER
 from driver_selection import WebDriveFactory
 from helpers import return_random_user_for_register
 from pages.feed_page import FeedPage

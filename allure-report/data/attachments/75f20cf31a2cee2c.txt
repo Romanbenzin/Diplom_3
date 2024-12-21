@@ -1,2 +1,0 @@
-sssss
-<generator object test_user_create at 0x00000244FB4D7300>

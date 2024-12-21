@@ -1,5 +1,0 @@
-sssss
-Тип test_user_create: <class 'generator'>
-Значение test_user_create: <generator object test_user_create at 0x000001F982227220>
-{'email': 'r3079:3079@ya.ru', 'password': 'password:3079', 'name': 'Username:3079'}
-sssss
