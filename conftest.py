@@ -1,66 +1,42 @@
 import allure
 import pytest
 import requests
-import random
 
-from selenium import webdriver
-from config_for_driver import browser_name
-from data.url import URL_MAIN_PAGE
+from config_driver_selection import browser_name
+from data.urls import URL_MAIN_PAGE, MAIN_API, API_REGISTER, API_USER
+from driver_selection import WebDriveFactory
+from helpers import return_random_user_for_register
 from pages.feed_page import FeedPage
 from pages.login_page import ResetPassword
 from pages.main_page import MainPage
 from pages.personal_account_page import PersonalAccountPage
 
 @pytest.fixture
-@allure.step("Генерация пользовательских данных")
-def random_user_for_register():
-    random_number = random.randint(1000, 9999)
-    random_email = f"r{random_number}:{random_number}@ya.ru"
-    random_pass = f"password:{random_number}"
-    random_username = f"Username:{random_number}"
-
-    user_data = {
-        "email": random_email,
-        "password": random_pass,
-        "name": random_username
-    }
-    return user_data
-
-@pytest.fixture
 @allure.step("Создание пользователя через api")
-def test_user_create(random_user_for_register):
-    response_create_user = requests.post("https://stellarburgers.nomoreparties.site/api/auth/register", data=random_user_for_register)
-    return random_user_for_register, response_create_user
+def test_user_create():
+    random_user_for_register = return_random_user_for_register()
+    response_create_user = requests.post(API_REGISTER, data=random_user_for_register)
 
-class WebDriveFactory:
-    @staticmethod
-    def get_web_driver(browser):
-        if browser == "fifefox":
-            return webdriver.Firefox()
-        elif browser == "chrome":
-            return webdriver.Chrome()
-        else:
-            print("Для такого браузера нет драйвера")
+    yield random_user_for_register
+
+    # Удалить созданного через api пользователя
+    data = {
+        "Authorization": response_create_user.json()["accessToken"]
+    }
+    requests.delete(API_USER, headers=data)
 
 @pytest.fixture(scope='function')
-def driver(test_user_create):
+def driver():
     driver = WebDriveFactory.get_web_driver(browser_name)
     driver.get(URL_MAIN_PAGE)
 
     yield driver
-
     #Закрыть браузер:
     try:
         if driver:
             driver.quit()
     except Exception as e:
         print(f"Error closing driver: {e}")
-    # Удалить созданного через api пользователя
-    _, response_create_user = test_user_create
-    data = {
-        "Authorization": response_create_user.json()["accessToken"]
-    }
-    requests.delete("https://stellarburgers.nomoreparties.site/api/auth/user", headers=data)
 
 @pytest.fixture()
 @allure.step("Открытие главной страницы")

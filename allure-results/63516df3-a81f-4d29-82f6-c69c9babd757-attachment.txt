@@ -1,3 +1,0 @@
-sss
-{'success': True, 'user': {'email': 'r5257:5257@ya.ru', 'name': 'Username:5257'}, 'accessToken': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NjVmMTdkOWVkMjgwMDAxYjUzYjNhOSIsImlhdCI6MTczNDczNDIwNSwiZXhwIjoxNzM0NzM1NDA1fQ.33Vad5jvvPoq3ucHvM8rz78cu-8AbSy3pLP5F96dDAI', 'refreshToken': 'efab4094039e550f7ba5ab0d629b524a7b579a7ff02d1aa64514dda228140eca8dd9e0bfe915d4bc'}
-sss

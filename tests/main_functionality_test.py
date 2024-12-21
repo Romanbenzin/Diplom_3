@@ -49,14 +49,14 @@ class TestMainFunctional:
 
     @allure.title("Тест: залогиненный пользователь может оформить заказ")
     def test_create_order(self, driver, main_func, test_user_create):
-        random_user_for_register, _ = test_user_create
+        user_data = next(test_user_create)
         WebDriverWait(driver, 20).until(expected_conditions.element_to_be_clickable(ingredient))
         main_func.move_and_drop()
         WebDriverWait(driver, 20).until(expected_conditions.element_to_be_clickable(main_page_order_button))
         main_func.click_order_button()
         WebDriverWait(driver, 20).until(expected_conditions.element_to_be_clickable(login_page_recover_password_button))
-        main_func.input_email(random_user_for_register["email"])
-        main_func.input_password(random_user_for_register["password"])
+        main_func.input_email(user_data["email"])
+        main_func.input_password(user_data["password"])
         main_func.click_login_button()
         WebDriverWait(driver, 20).until(expected_conditions.element_to_be_clickable(main_page_order_button))
         main_func.click_order_button()

@@ -29,8 +29,6 @@ class FeedPage(MainPage):
     def find_order(self, order):
         order_numbers_list = self.driver.find_elements(*find_order_number_in_list)
         order_numbers = [number.text.strip() for number in order_numbers_list]
-        print(order_numbers)
-        print(order)
         if f"#0{order}" in order_numbers:
             return "Заказ есть в ленте"
         else:
