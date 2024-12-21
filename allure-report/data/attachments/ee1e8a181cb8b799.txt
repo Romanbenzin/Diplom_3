@@ -1,0 +1,4 @@
+sssss
+Тип test_user_create: <class 'generator'>
+Значение test_user_create: <generator object test_user_create at 0x0000021CE2627220>
+sssss
