@@ -1,11 +1,11 @@
 import allure
 from selenium.webdriver import ActionChains
-
 from data.locators import ingredient, modal_ingredient_text, close_modal, move_place
 from pages.base_page import BasePage
 
 
 class MainPage(BasePage):
+
     @allure.step("Закрытие модального окна")
     def close_modal_ingredient(self):
         self.driver.find_element(*close_modal).click()

@@ -4,6 +4,7 @@ from data.locators import main_page_personal_account, constructor_button, feed_o
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
+
 class BasePage:
 
     def __init__(self, driver):
