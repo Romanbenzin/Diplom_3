@@ -3,11 +3,9 @@ from selenium.webdriver.common.by import By
 # Главная страница
 feed_order_button = [By.XPATH, "//a[@class='AppHeader_header__link__3D_hX' and .//p[text()='Лента Заказов']]"]
 constructor_button = [By.XPATH, "//p[@class='AppHeader_header__linkText__3q_va ml-2']"]
-main_page_login_button = [By.XPATH, "//a[@class='Auth_link__1fOlj' and @href='/register']"]
 main_page_personal_account = [By.XPATH, "//a[@class='AppHeader_header__link__3D_hX' and .//p[text()='Личный Кабинет']]"]
 main_page_order_button = [By.XPATH, "//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg']"]
 ingredient = [By.XPATH, "//p[text()='Флюоресцентная булка R2-D3']"]
-modal_ingredient = [By.XPATH, "//div[@class='Modal_modal__contentBox__sCy8X pt-10 pb-15']"]
 modal_ingredient_text = [By.XPATH, "//p[@class='undefined text text_type_main-default text_color_inactive']"]
 close_modal = [By.XPATH, "//button[@class='Modal_modal__close_modified__3V5XS Modal_modal__close__TnseK']"]
 move_place = [By.XPATH, "//span[@class='constructor-element__text']"]
@@ -25,7 +23,6 @@ register_button_in_personal_account = [By.XPATH, "//a[@class='Auth_link__1fOlj' 
 # Страница forgot-password
 forgot_page_login_button = [By.XPATH, "//a[@class='Auth_link__1fOlj' and @href='/login']"]
 forgot_page_email_field = [By.XPATH, "//input[@class='text input__textfield text_type_main-default']"]
-forgot_page_recover_button = [By.XPATH, "//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa']"]
 
 # Страница reset-password
 reset_pass_page_field = [By.XPATH, "//input[@class='text input__textfield text_type_main-default']"]
@@ -37,7 +34,6 @@ reset_pass_second_field = [By.XPATH, "//label[@class='input__placeholder text no
 #Страница account
 personal_account_exit_button = [By.XPATH, "//button[@class='Account_button__14Yp3 text text_type_main-medium text_color_inactive']"]
 personal_account_history_button = [By.XPATH, "//a[text()='История заказов']"]
-personal_account_profile_button = [By.XPATH, "//a[@class='Account_link__2ETsJ text text_type_main-medium text_color_inactive']"]
 modal_loader = [By.XPATH, "//p[@class='Modal_modal__loading__3534A']"]
 
 # Страница feed

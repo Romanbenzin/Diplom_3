@@ -1,6 +1,5 @@
 URL_MAIN_PAGE = "https://stellarburgers.nomoreparties.site/"
 URL_LOGIN_PAGE = URL_MAIN_PAGE + "login"
-URL_ACCOUNT_PAGE = URL_MAIN_PAGE + "account/profile"
 URL_ORDER_HISTORY = URL_MAIN_PAGE + "account/order-history"
 URL_ORDER_FEED = URL_MAIN_PAGE + "feed"
 

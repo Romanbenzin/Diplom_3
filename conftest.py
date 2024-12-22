@@ -8,6 +8,7 @@ from driver_selection import WebDriveFactory
 from helpers import return_random_user_for_register
 from pages.account_profile_page import AccountProfile
 from pages.feed_page import FeedPage
+from pages.forgot_password_page import ForgotPassword
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
 from pages.personal_account_page import PersonalAccountPage
@@ -42,27 +43,32 @@ def driver():
         print(f"Error closing driver: {e}")
 
 @pytest.fixture()
-@allure.step("Открытие главной страницы")
+@allure.step("Обращение к странице reset_password")
 def reset_password(driver):
     return ResetPassword(driver)
 
 @pytest.fixture()
-@allure.step("Открытие главной страницы")
+@allure.step("Обращение к странице personal_account")
 def personal_account(driver):
     return PersonalAccountPage(driver)
 
 @pytest.fixture()
-@allure.step("Открытие главной страницы")
+@allure.step("Обращение к странице main")
 def main_func(driver):
     return MainPage(driver)
 
 @pytest.fixture()
-@allure.step("Открытие главной страницы")
+@allure.step("Обращение к странице feed")
 def feed(driver):
     return FeedPage(driver)
 
 @pytest.fixture()
-@allure.step("Открытие главной страницы")
+@allure.step("Обращение к странице forgot_password")
+def forgot_password(driver):
+    return ForgotPassword(driver)
+
+@pytest.fixture()
+@allure.step("Обращение к странице account_profile")
 def account_profile(driver):
     return AccountProfile(driver)
 

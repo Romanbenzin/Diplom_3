@@ -26,14 +26,6 @@ class BasePage:
     def click_on_feed(self):
         self.driver.find_element(*feed_order_button).click()
 
-    @allure.step("Ожидание исчезновения объекта")
-    def waiting_object_to_disappear(self, locator):
-        WebDriverWait(self.driver, 20).until(expected_conditions.invisibility_of_element_located(locator))
-
-    @allure.step("Ожидание появление объекта")
-    def waiting_object_to_visible(self, locator):
-        WebDriverWait(self.driver, 20).until(expected_conditions.visibility_of_element_located(locator))
-
     @allure.step("Ожидание, что кнопка Конструктор станет кликабельна")
     def waiting_constructor_button_to_be_clickable(self):
         WebDriverWait(self.driver, 20).until(expected_conditions.element_to_be_clickable(constructor_button))
@@ -41,15 +33,3 @@ class BasePage:
     @allure.step("Проверка текущего url")
     def check_current_url(self):
         return self.driver.current_url
-
-    @allure.step("Получить текст локатора")
-    def return_locator_text(self, locator):
-        return self.driver.find_element(*locator).text
-
-    @allure.step("Сделать клик")
-    def click_on_button(self, button):
-        self.driver.find_element(*button).click()
-
-    @allure.step("Ввести в поле данные")
-    def input_data_in_field(self, locator, input_data):
-        self.driver.find_element(*locator).send_keys(input_data)

@@ -7,6 +7,7 @@ from pages.base_page import BasePage
 
 
 class AccountProfile(BasePage):
+
     @allure.step("Ожидание исчезновения модального окна")
     def waiting_modal_loader_to_disappear(self):
         WebDriverWait(self.driver, 20).until(expected_conditions.invisibility_of_element_located(modal_loader))

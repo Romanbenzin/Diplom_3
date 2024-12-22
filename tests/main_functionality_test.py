@@ -2,7 +2,6 @@ import allure
 import pytest
 
 from conftest import main_func
-from data.locators import modal_ingredient, ingredient
 from data.urls import URL_MAIN_PAGE, URL_ORDER_FEED
 
 
@@ -30,13 +29,12 @@ class TestMainFunctional:
     @allure.title("Тест: если кликнуть на ингредиент, появится всплывающее окно с деталями")
     def test_click_on_ingredient(self, main_func):
         main_func.click_on_first_ingredient()
-        main_func.waiting_object_present_on_page(modal_ingredient)
 
         assert main_func.text_calories() == "Калории,ккал"
 
     @allure.title("Тест: закрытие модалки")
     def test_close_ingredient_modal(self, main_func):
-        main_func.click_on_button(ingredient)
+        main_func.click_on_first_ingredient()
         main_func.close_modal_ingredient()
         main_func.waiting_order_button_to_be_clickable()
 

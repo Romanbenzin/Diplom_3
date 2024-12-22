@@ -1,10 +1,8 @@
 import allure
-from selenium.webdriver import ActionChains
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-from data.locators import close_modal_order, find_order_number_in_list, total_count_all_time, total_today_count, \
-    ingredient, move_place, text_feed_order, first_order, text_field_in_modal, order_in_work
+from data.locators import find_order_number_in_list, total_count_all_time, total_today_count, text_feed_order, first_order, text_field_in_modal, order_in_work
 from pages.base_page import BasePage
 
 
@@ -46,4 +44,3 @@ class FeedPage(BasePage):
     @allure.step("Текст в модалке заказа")
     def text_status_order_in_work(self):
         return self.driver.find_element(*order_in_work).text
-

@@ -10,11 +10,10 @@ from pages.base_page import BasePage
 
 
 class MainPage(BasePage):
+
     @allure.step("Нажатие на кнопку Войти в аккаунт/Оформить заказ")
     def click_on_order_button(self):
         self.driver.find_element(*main_page_order_button).click()
-
-    @allure.step("")
 
     @allure.step("Клик на первый ингредиент на главной")
     def click_on_first_ingredient(self):
