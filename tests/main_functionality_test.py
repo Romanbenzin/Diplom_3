@@ -2,9 +2,7 @@ import allure
 import pytest
 
 from conftest import main_func
-from data.locators import main_page_order_button, modal_loader, modal_ingredient, ingredient, create_order_modal, \
-    login_page_recover_password_button, constructor_button, login_page_password_field, \
-    login_page_email_field, main_page_make_burger_text, counter_ingredient, login_page_login_button
+from data.locators import modal_ingredient, ingredient
 from data.urls import URL_MAIN_PAGE, URL_ORDER_FEED
 
 
@@ -40,7 +38,7 @@ class TestMainFunctional:
     def test_close_ingredient_modal(self, main_func):
         main_func.click_on_button(ingredient)
         main_func.close_modal_ingredient()
-        main_func.waiting_open_modal_first_ingredient()
+        main_func.waiting_order_button_to_be_clickable()
 
         text_burger = main_func.return_make_burger_text()
         assert text_burger == "Соберите бургер"
@@ -57,7 +55,7 @@ class TestMainFunctional:
         user_data = next(test_user_create)
         main_func.waiting_ingredient_to_clickable()
         main_func.move_and_drop()
-        main_func.waiting_open_modal_first_ingredient()
+        main_func.waiting_order_button_to_be_clickable()
         main_func.click_on_order_button()
         login.waiting_recover_password_button_to_click()
         login.input_email(user_data["email"])

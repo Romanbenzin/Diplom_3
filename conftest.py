@@ -58,7 +58,7 @@ def main_func(driver):
 
 @pytest.fixture()
 @allure.step("Открытие главной страницы")
-def feed_order(driver):
+def feed(driver):
     return FeedPage(driver)
 
 @pytest.fixture()

@@ -1,16 +1,18 @@
 import allure
 from selenium.webdriver import ActionChains
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
 
 from data.locators import close_modal_order, find_order_number_in_list, total_count_all_time, total_today_count, \
-    ingredient, move_place
+    ingredient, move_place, text_feed_order, first_order, text_field_in_modal, order_in_work
 from pages.base_page import BasePage
 
 
 class FeedPage(BasePage):
 
-    @allure.step("Клик закрытия модалки")
-    def click_close_modal_order(self):
-        self.driver.find_element(*close_modal_order).click()
+    @allure.step("Ожидание и проверка, что заказы есть на странице")
+    def waiting_orders_on_page(self):
+        WebDriverWait(self.driver, 20).until(expected_conditions.presence_of_element_located(find_order_number_in_list))
 
     @allure.step("Найти ордер в списке заказов")
     def find_order(self, order):
@@ -29,8 +31,19 @@ class FeedPage(BasePage):
     def today_count(self):
         return self.driver.find_element(*total_today_count).text
 
-    @allure.step("Перенос булочки в заказ")
-    def move_and_drop(self):
-        take = self.driver.find_element(*ingredient)
-        move = self.driver.find_element(*move_place)
-        ActionChains(self.driver).drag_and_drop(take, move).perform()
+    @allure.step("Ожидание, когда пропадет модалка Загрузка")
+    def waiting_loader_end(self):
+        WebDriverWait(self.driver, 20).until(expected_conditions.visibility_of_element_located(text_feed_order))
+
+    @allure.step("Клик на верхний заказ")
+    def click_on_first_order(self):
+        self.driver.find_element(*first_order).click()
+
+    @allure.step("Текст в модалке заказа")
+    def text_in_modal_order(self):
+        return self.driver.find_element(*text_field_in_modal).text
+
+    @allure.step("Текст в модалке заказа")
+    def text_status_order_in_work(self):
+        return self.driver.find_element(*order_in_work).text
+

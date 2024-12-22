@@ -34,10 +34,6 @@ class BasePage:
     def waiting_object_to_visible(self, locator):
         WebDriverWait(self.driver, 20).until(expected_conditions.visibility_of_element_located(locator))
 
-    @allure.step("Ожидание и проверка, что объект есть на странице")
-    def waiting_object_present_on_page(self, locator):
-        WebDriverWait(self.driver, 20).until(expected_conditions.presence_of_element_located(locator))
-
     @allure.step("Ожидание, что кнопка Конструктор станет кликабельна")
     def waiting_constructor_button_to_be_clickable(self):
         WebDriverWait(self.driver, 20).until(expected_conditions.element_to_be_clickable(constructor_button))

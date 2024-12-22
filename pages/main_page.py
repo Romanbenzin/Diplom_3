@@ -4,7 +4,8 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
 from data.locators import ingredient, modal_ingredient_text, close_modal, move_place, main_page_order_button, \
-    main_page_make_burger_text, counter_ingredient, create_order_modal
+    main_page_make_burger_text, counter_ingredient, create_order_modal, wait_order_number_modal, order_number_field, \
+    close_modal_order
 from pages.base_page import BasePage
 
 
@@ -13,12 +14,14 @@ class MainPage(BasePage):
     def click_on_order_button(self):
         self.driver.find_element(*main_page_order_button).click()
 
+    @allure.step("")
+
     @allure.step("Клик на первый ингредиент на главной")
     def click_on_first_ingredient(self):
         self.driver.find_element(*ingredient).click()
 
-    @allure.step("Ожидание открытия модального окна после нажатия на ингредиент")
-    def waiting_open_modal_first_ingredient(self):
+    @allure.step("Ожидание, когда кнопка заказа будет доступна для клика")
+    def waiting_order_button_to_be_clickable(self):
         WebDriverWait(self.driver, 20).until(expected_conditions.element_to_be_clickable(main_page_order_button))
 
     @allure.step("Закрытие модального окна первого ингредиента")
@@ -54,3 +57,15 @@ class MainPage(BasePage):
     @allure.step("Текст успешности оформления заказа")
     def text_modal_after_order_create(self):
         return self.driver.find_element(*create_order_modal).text
+
+    @allure.step("Ожидание закрытия модалки после оформления заказа")
+    def waiting_close_modal_after_order_create(self):
+        WebDriverWait(self.driver, 20).until(expected_conditions.visibility_of_element_located(wait_order_number_modal))
+
+    @allure.step("Получить номер заказа")
+    def text_order_number(self):
+        return self.driver.find_element(*order_number_field).text
+
+    @allure.step("Закрыть модалку после оформления заказа")
+    def close_modal_after_order_create(self):
+        self.driver.find_element(*close_modal_order).click()
