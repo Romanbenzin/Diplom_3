@@ -6,10 +6,13 @@ from config_driver_selection import browser_name
 from data.urls import URL_MAIN_PAGE, API_REGISTER, API_USER
 from driver_selection import WebDriveFactory
 from helpers import return_random_user_for_register
+from pages.account_profile_page import AccountProfile
 from pages.feed_page import FeedPage
-from pages.login_page import ResetPassword
+from pages.login_page import LoginPage
 from pages.main_page import MainPage
 from pages.personal_account_page import PersonalAccountPage
+from pages.reset_password_page import ResetPassword
+
 
 @pytest.fixture
 @allure.step("Создание пользователя через api")
@@ -40,7 +43,7 @@ def driver():
 
 @pytest.fixture()
 @allure.step("Открытие главной страницы")
-def recover_password(driver):
+def reset_password(driver):
     return ResetPassword(driver)
 
 @pytest.fixture()
@@ -57,3 +60,13 @@ def main_func(driver):
 @allure.step("Открытие главной страницы")
 def feed_order(driver):
     return FeedPage(driver)
+
+@pytest.fixture()
+@allure.step("Открытие главной страницы")
+def account_profile(driver):
+    return AccountProfile(driver)
+
+@pytest.fixture()
+@allure.step("Открытие главной страницы")
+def login(driver):
+    return LoginPage(driver)

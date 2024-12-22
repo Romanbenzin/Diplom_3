@@ -38,9 +38,9 @@ class BasePage:
     def waiting_object_present_on_page(self, locator):
         WebDriverWait(self.driver, 20).until(expected_conditions.presence_of_element_located(locator))
 
-    @allure.step("Ожидание, что элемент стал кликабельным")
-    def waiting_object_to_be_clickable(self, locator):
-        WebDriverWait(self.driver, 20).until(expected_conditions.element_to_be_clickable(locator))
+    @allure.step("Ожидание, что кнопка Конструктор станет кликабельна")
+    def waiting_constructor_button_to_be_clickable(self):
+        WebDriverWait(self.driver, 20).until(expected_conditions.element_to_be_clickable(constructor_button))
 
     @allure.step("Проверка текущего url")
     def check_current_url(self):
