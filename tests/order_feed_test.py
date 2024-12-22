@@ -1,10 +1,8 @@
 import allure
-import pytest
 
 from conftest import main_func
 
 
-@pytest.mark.usefixtures("feed")
 class TestOrderFeed:
 
     @allure.title("Тест: если кликнуть на заказ, откроется всплывающее окно с деталями")

@@ -1,11 +1,9 @@
 import allure
-import pytest
 
 from conftest import main_func
 from data.urls import URL_MAIN_PAGE, URL_ORDER_FEED
 
 
-@pytest.mark.usefixtures("main_func")
 class TestMainFunctional:
 
     @allure.title("Тест: переход по клику на «Конструктор»")

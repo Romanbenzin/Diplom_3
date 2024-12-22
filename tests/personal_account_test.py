@@ -1,11 +1,9 @@
 import allure
-import pytest
 
 from conftest import test_user_create, login, main_func
 from data.urls import URL_LOGIN_PAGE, URL_ORDER_HISTORY
 
 
-@pytest.mark.usefixtures("personal_account")
 class TestRestorePassword:
 
     @allure.title("Тест: переход по клику на «Личный кабинет»")

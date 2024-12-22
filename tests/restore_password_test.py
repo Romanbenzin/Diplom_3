@@ -1,10 +1,8 @@
 import allure
-import pytest
 
 from data.static_data import LOGIN_TEXT, MY_EMAIL, MY_PASSWORD
 
 
-@pytest.mark.usefixtures("forgot_password")
 class TestRestorePassword:
 
 
