@@ -48,6 +48,6 @@ class FeedPage(BasePage):
     def text_in_modal_order(self):
         return self.return_text(text_field_in_modal)
 
-    @allure.step("Текст в модалке заказа")
+    @allure.step("Текст номер заказа в статусе в работе")
     def text_status_order_in_work(self):
         return self.return_text(order_in_work)

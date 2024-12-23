@@ -1,7 +1,6 @@
 import allure
-from selenium.webdriver import ActionChains
 
-from data.locators import main_page_personal_account, constructor_button, feed_order_button
+from selenium.webdriver import ActionChains
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
