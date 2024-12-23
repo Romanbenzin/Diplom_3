@@ -54,7 +54,7 @@ def personal_account(driver):
 
 @pytest.fixture()
 @allure.step("Обращение к странице main")
-def main_func(driver):
+def main(driver):
     return MainPage(driver)
 
 @pytest.fixture()

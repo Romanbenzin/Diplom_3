@@ -1,6 +1,5 @@
 import allure
 
-from conftest import test_user_create, login, main_func
 from data.urls import URL_LOGIN_PAGE, URL_ORDER_HISTORY
 
 
@@ -8,21 +7,21 @@ class TestRestorePassword:
 
     @allure.title("Тест: переход по клику на «Личный кабинет»")
     def test_restore_password(self, personal_account, login):
-        personal_account.click_on_login_to_account()
+        personal_account.click_on_personal_account_button()
 
         locator_text = login.text_login_button()
         assert locator_text == "Войти"
 
     @allure.title("Тест: переход в раздел «История заказов»")
-    def test_orders_history(self, personal_account, login, main_func, test_user_create):
+    def test_orders_history(self, personal_account, login, main, test_user_create):
         user_data = next(test_user_create)
         # Авторизация
-        personal_account.click_on_login_to_account()
+        personal_account.click_on_personal_account_button()
         login.input_email(user_data["email"])
         login.input_password(user_data["password"])
         login.click_login_button()
         # Нужна пауза
-        main_func.waiting_order_button_to_be_clickable()
+        main.waiting_order_button_to_be_clickable()
         personal_account.click_on_personal_account_button()
         # Нужна пауза
         personal_account.waiting_save_button_to_visible()
@@ -32,15 +31,15 @@ class TestRestorePassword:
         assert current_url == URL_ORDER_HISTORY
 
     @allure.title("Тест: выход из аккаунта")
-    def test_logout(self, personal_account, login, main_func, test_user_create):
+    def test_logout(self, personal_account, login, main, test_user_create):
         user_data = next(test_user_create)
         # Авторизация
-        personal_account.click_on_login_to_account()
+        personal_account.click_on_personal_account_button()
         login.input_email(user_data["email"])
         login.input_password(user_data["password"])
         login.click_login_button()
         # Нужна пауза
-        main_func.waiting_order_button_to_be_clickable()
+        main.waiting_order_button_to_be_clickable()
         personal_account.click_on_personal_account_button()
         # Нужна пауза
         personal_account.waiting_recover_password_button_to_click()

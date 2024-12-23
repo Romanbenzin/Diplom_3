@@ -7,8 +7,8 @@ class TestRestorePassword:
 
 
     @allure.title("Тест: переход на страницу восстановления пароля по кнопке «Восстановить пароль»")
-    def test_restore_password(self, main_func, login, forgot_password):
-        forgot_password.click_on_login_to_account()
+    def test_restore_password(self, main, login, forgot_password):
+        forgot_password.click_on_personal_account_button()
         login.waiting_register_button_to_click()
         login.click_recover_password_button_to()
 
@@ -17,7 +17,7 @@ class TestRestorePassword:
 
     @allure.title("Тест: ввод почты и клик по кнопке «Восстановить»")
     def test_open_reset_pass_page(self, login, forgot_password, reset_password):
-        forgot_password.click_on_login_to_account()
+        forgot_password.click_on_personal_account_button()
         login.waiting_register_button_to_click()
         login.click_recover_password_button_to()
         forgot_password.input_email(MY_EMAIL)
@@ -29,7 +29,7 @@ class TestRestorePassword:
 
     @allure.title("Тест: клик по кнопке показать/скрыть пароль делает поле активным — подсвечивает его")
     def test_check_hidden_pass(self, login, reset_password, forgot_password):
-        forgot_password.click_on_login_to_account()
+        forgot_password.click_on_personal_account_button()
         login.waiting_register_button_to_click()
         login.click_recover_password_button_to()
         forgot_password.input_email(MY_EMAIL)
